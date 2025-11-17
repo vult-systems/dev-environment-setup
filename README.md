@@ -1,114 +1,88 @@
-\# PowerShell 7 Setup Guide
+# Development Environment Setup
 
+Complete guide for setting up my development environment on Windows with PowerShell 7, Oh My Posh, Git, and GitHub CLI.
 
+## Git & GitHub Setup
 
-My personal PowerShell 7 environment setup with Oh My Posh and atomic theme.
-
-
-
-\## Dependencies \& Installation Steps
-
-
-
-\### 1. PowerShell 7
-
+### 1. Install Git
 ```powershell
+winget install Git.Git
+```
 
+### 2. Configure Git
+```powershell
+git config --global user.name "your-username"
+git config --global user.email "your-email@example.com"
+```
+
+### 3. Install GitHub CLI
+```powershell
+winget install GitHub.cli
+```
+
+### 4. Authenticate with GitHub
+```powershell
+gh auth login
+```
+
+### 5. Create a New Repository
+```powershell
+cd C:\path\to\your\project
+git init
+git add .
+git commit -m "Initial commit"
+gh repo create repo-name --public --source=. --remote=origin --push
+```
+
+## PowerShell 7 Setup
+
+### 1. Install PowerShell 7
+```powershell
 winget install Microsoft.PowerShell
-
 ```
 
-
-
-\### 2. Oh My Posh
-
+### 2. Install Oh My Posh
 ```powershell
-
 winget install JanDeDobbeleer.OhMyPosh
-
 ```
 
-\*(Or if winget issues: use the direct installer script)\*
-
-
-
-\### 3. PSReadLine (for IntelliSense)
-
+### 3. Install PSReadLine
 ```powershell
-
 Install-Module -Name PSReadLine -Force -SkipPublisherCheck
-
 ```
 
-
-
-\### 4. Nerd Font
-
+### 4. Install Nerd Font
 ```powershell
-
 oh-my-posh font install
-
 ```
+Pick: CaskaydiaCove NF or BlexMono Nerd Font
 
-\*\*Recommended fonts:\*\* CaskaydiaCove NF or BlexMono Nerd Font
-
-
-
-\### 5. Set up Profile
-
+### 5. Set up Profile
 ```powershell
-
-\# Create profile if it doesn't exist
-
 New-Item -Path $PROFILE -Type File -Force
-
-
-
-\# Edit profile
-
 notepad $PROFILE
-
 ```
 
-
-
-Add this to the profile:
-
+Add this:
 ```powershell
-
-\# Set themes path for Oh My Posh
-
-$env:POSH\_THEMES\_PATH = "C:\\Program Files\\WindowsApps\\ohmyposh.cli\_27.6.0.0\_x64\_\_96v55e8n804z4\\themes"
-
-oh-my-posh init pwsh --config "$env:POSH\_THEMES\_PATH\\atomic.omp.json" | Invoke-Expression
-
-
-
-\# PSReadLine options for better IntelliSense
+$env:POSH_THEMES_PATH = "C:\Program Files\WindowsApps\ohmyposh.cli_27.6.0.0_x64__96v55e8n804z4\themes"
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
 
 Set-PSReadLineOption -PredictionSource History
-
 Set-PSReadLineOption -PredictionViewStyle ListView
-
 Set-PSReadLineOption -EditMode Windows
-
 ```
 
+### 6. Windows Terminal Font
+- Ctrl + , for Settings
+- PowerShell 7 → Appearance
+- Font: CaskaydiaCove NF
 
-
-\### 6. Windows Terminal Font Settings
-
-\- Open Windows Terminal Settings (`Ctrl + ,`)
-
-\- Go to PowerShell 7 profile → Appearance
-
-\- Set Font to your installed Nerd Font
-
-
-
-\## Notes
-
-\- Theme: \*\*atomic\*\* (retro, minimal, clean)
-
-\- Alternative themes available in `$env:POSH\_THEMES\_PATH`
-
+## Daily Git Commands
+```powershell
+git status
+git add .
+git commit -m "message"
+git push
+git pull
+```
