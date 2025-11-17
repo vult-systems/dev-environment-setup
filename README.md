@@ -1,6 +1,6 @@
 # Development Environment Setup
 
-Development environment setup on Windows with PowerShell 7, Oh My Posh, Git, and GitHub CLI.
+My development environment setup on Windows with PowerShell 7, Oh My Posh, Git, and GitHub CLI.
 
 **GitHub:** vult-systems  
 **Repos Location:** C:\repos
@@ -30,6 +30,7 @@ gh auth login
 
 ### 5. Create a New Repository
 ```powershell
+# Always work in C:\repos
 cd C:\repos
 mkdir new-repo-name
 cd new-repo-name
