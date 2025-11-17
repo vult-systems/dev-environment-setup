@@ -1,6 +1,6 @@
 # Development Environment Setup
 
-Complete guide for setting up my development environment on Windows with PowerShell 7, Oh My Posh, Git, and GitHub CLI.
+Guide for setting up my development environment on Windows with PowerShell 7, Oh My Posh, Git, and GitHub CLI.
 
 ## Git & GitHub Setup
 
