@@ -1,6 +1,9 @@
 # Development Environment Setup
 
-Complete guide for setting up my development environment on Windows with PowerShell 7, Oh My Posh, Git, and GitHub CLI.
+Development environment setup on Windows with PowerShell 7, Oh My Posh, Git, and GitHub CLI.
+
+**GitHub:** vult-systems  
+**Repos Location:** C:\repos
 
 ## Git & GitHub Setup
 
@@ -11,8 +14,8 @@ winget install Git.Git
 
 ### 2. Configure Git
 ```powershell
-git config --global user.name "your-username"
-git config --global user.email "your-email@example.com"
+git config --global user.name "vult-systems"
+git config --global user.email "ops.vult@gmail.com"
 ```
 
 ### 3. Install GitHub CLI
@@ -27,11 +30,16 @@ gh auth login
 
 ### 5. Create a New Repository
 ```powershell
-cd C:\path\to\your\project
+cd C:\repos
+mkdir new-repo-name
+cd new-repo-name
+
 git init
+notepad README.md
+
 git add .
 git commit -m "Initial commit"
-gh repo create repo-name --public --source=. --remote=origin --push
+gh repo create new-repo-name --public --source=. --remote=origin --push
 ```
 
 ## PowerShell 7 Setup
@@ -78,11 +86,46 @@ Set-PSReadLineOption -EditMode Windows
 - PowerShell 7 → Appearance
 - Font: CaskaydiaCove NF
 
+## Clone and Edit Existing Repository
+
+### Clone a repo
+```powershell
+cd C:\repos
+gh repo clone vult-systems/repo-name
+cd repo-name
+```
+
+Or with HTTPS:
+```powershell
+cd C:\repos
+git clone https://github.com/vult-systems/repo-name.git
+cd repo-name
+```
+
+### Make changes and push
+```powershell
+# Edit files
+notepad README.md
+
+# Check what changed
+git status
+
+# Add, commit, and push
+git add .
+git commit -m "Updated documentation"
+git push
+```
+
+### View repo on GitHub
+```powershell
+gh repo view --web
+```
+
 ## Daily Git Commands
 ```powershell
-git status
-git add .
-git commit -m "message"
-git push
-git pull
+git status                      # Check what changed
+git add .                       # Stage all changes
+git commit -m "message"         # Commit with message
+git push                        # Push to GitHub
+git pull                        # Pull latest changes
 ```
